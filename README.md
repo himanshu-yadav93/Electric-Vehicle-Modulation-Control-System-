@@ -8,6 +8,7 @@ The model is structured into three primary domains:
 **Electrical Power Stage**
 
 At the heart of the propulsion system is a DC Motor driven by a PWM-controlled H-Bridge. This configuration allows for precise control over the average voltage supplied to the motor terminals. To ensure the model could reach a target speed of 20 m/s (72 km/h), the battery and H-Bridge were configured with a high-voltage reference (300V+) to counteract the motor's Back EMF at high RPMs
+
 **.Control and Modulation**
 
 The Longitudinal Driver block acts as the central controller, simulating the behavior of a human driver or an automated cruise control system. It utilizes a Proportional-Integral (PI) control law to minimize the error between the Reference Velocity ($V_{ref}$) and the Feedback Speed ($V_{fdbk}$) from the vehicle. Through iterative tuning, the gains were optimized to $K_p = 100$ and $K_i = 7$ to ensure rapid response times.
@@ -15,7 +16,7 @@ The Longitudinal Driver block acts as the central controller, simulating the beh
 
 The Vehicle Body subsystem incorporates the physical characteristics of a standard sedan, including a 1000 kg mass. The subsystem was designed to handle multi-variable inputs, specifically:Grade Angle: Accounting for gravity-induced resistance on inclines.Wind Speed: Simulating aerodynamic drag effects on the chassis.
 
-3.** Technical Challenges and Iterative Troubleshooting**
+**3.** Technical Challenges and Iterative Troubleshooting****
 
 The development process involved several critical troubleshooting phases that refined the model’s accuracy:
 
