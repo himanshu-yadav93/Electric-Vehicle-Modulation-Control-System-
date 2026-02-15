@@ -9,18 +9,19 @@ The model is structured into three primary domains:
 
 At the heart of the propulsion system is a DC Motor driven by a PWM-controlled H-Bridge. This configuration allows for precise control over the average voltage supplied to the motor terminals. To ensure the model could reach a target speed of 20 m/s (72 km/h), the battery and H-Bridge were configured with a high-voltage reference (300V+) to counteract the motor's Back EMF at high RPMs
 
-**.Control and Modulation**
+**Control and Modulation**
 
 The Longitudinal Driver block acts as the central controller, simulating the behavior of a human driver or an automated cruise control system. It utilizes a Proportional-Integral (PI) control law to minimize the error between the Reference Velocity ($V_{ref}$) and the Feedback Speed ($V_{fdbk}$) from the vehicle. Through iterative tuning, the gains were optimized to $K_p = 100$ and $K_i = 7$ to ensure rapid response times.
+
 **Mechanical Vehicle Dynamics**
 
 The Vehicle Body subsystem incorporates the physical characteristics of a standard sedan, including a 1000 kg mass. The subsystem was designed to handle multi-variable inputs, specifically:Grade Angle: Accounting for gravity-induced resistance on inclines.Wind Speed: Simulating aerodynamic drag effects on the chassis.
 
-**3.** Technical Challenges and Iterative Troubleshooting****
+**3. Technical Challenges and Iterative Troubleshooting**
 
 The development process involved several critical troubleshooting phases that refined the model’s accuracy:
 
-**Numerical Stability and Convergence: **
+**Numerical Stability and Convergence:**
 
 Initial simulations faced "failed to converge" and "linear algebra" errors. These were resolved by correctly implementing Electrical Reference points (grounding) for both the PWM and H-Bridge circuits, ensuring the solver had a $0V$ reference for all nodes.
 
@@ -30,7 +31,7 @@ A recurring issue involved the Distance block reporting negative values. Investi
 
 **Control System Tuning:**
 
-The initial $K_p$ and $K_i$ values led to a sluggish response where the vehicle could not reach its target within the simulation timeframe. Increasing the gains significantly improved acceleration but introduced overshoot (speed reaching 11.63 m/s for a 10 m/s target). This was mitigated by adjusting damping coefficients and removing unnecessary feed-forward gains ($K_{ff}$), resulting in a stable steady-state response.
+The initial $K_p$ and $K_i$ values led to a sluggish response where the vehicle could not reach its target within the simulation timeframe. Increasing the gains significantly improved acceleration but introduced overshoot. This was mitigated by adjusting damping coefficients and removing unnecessary feed-forward gains ($K_{ff}$), resulting in a stable steady-state response.
 
 **4. Final Results and Conclusion**
 
