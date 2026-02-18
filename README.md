@@ -33,6 +33,10 @@ A recurring issue involved the Distance block reporting negative values. Investi
 
 The initial $K_p$ and $K_i$ values led to a sluggish response where the vehicle could not reach its target within the simulation timeframe. Increasing the gains significantly improved acceleration but introduced overshoot. This was mitigated by adjusting damping coefficients and removing unnecessary feed-forward gains ($K_{ff}$), resulting in a stable steady-state response.
 
+**Battery level indicator**
+
+In this model you can also see the current percentage status of battery level 
+
 **4. Final Results and Conclusion**
 
 The finalized simulation demonstrates a highly reliable electric vehicle drive. This project successfully demonstrates the integration of power electronics, control theory, and mechanical physics, providing a solid foundation for future work on Regenerative Braking or State of Charge (SOC) estimation.
